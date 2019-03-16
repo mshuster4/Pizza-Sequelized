@@ -1,0 +1,115 @@
+    
+
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1>Pizza Passport</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <ul class="list-group-flush">
+                <h2>Eat</h2>
+            {{#each pizza}}
+                {{#unless this.devoured}}
+                <li class="list-group-item not-devoured">
+                    {{this.id}}. {{this.pizza_name}} <button type="button" class="btn devour-button float-right" data-id="{{id}}" data-devoured="{{devoured}}">Devour</button>
+                </li>
+                {{/unless}}
+            {{/each}}
+            </ul>
+
+        </div>
+
+        <div class=" col-md-6 col-sm-12 devoured">
+            <ul class="list-group-flush">
+                <h2>Ate</h2>
+            {{#each pizza}}
+                {{#if this.devoured}}
+                <li class="list-group-item">
+                    {{this.id}}. {{this.pizza_name}}
+                </li>
+                {{/if}}
+            {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <form>
+        <div class="row">
+
+            <div class="col-md-3"></div>
+
+            <div class=" col-md-6 col-sm-12">
+                <textarea class="form-control" id="pizza" class="form-control" placeholder="" rows="2"></textarea>
+            </div>
+
+            <div class="col-md-3"></div>
+
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col text-center">
+            <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <p>Type the name of a pizza you would like to eat and then hit the Submit Button.</p>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+        $(".devour-button").on("click", function(event) {
+
+            var id = $(this).data("id");
+            var devoured = $(this).data("devoured");
+
+            console.log(id);
+            console.log(devoured);
+
+            var wasDevoured = {
+                devoured: 1
+            };
+
+            $.ajax("/api/pizzas/" + id, {
+                type: "PUT",
+                data: wasDevoured
+            }).then(
+                function() {
+                    location.reload();
+                }
+            );
+        });
+
+        $("#submitButton").on("click", function(event) {
+            event.preventDefault();
+
+            var newPizza = {
+                pizza_name: $("#pizza").val().trim(),
+                devoured: 0
+            };
+
+
+            $.ajax("/api/pizzas/", {
+                type: "POST",
+                data: newPizza
+            }).then(
+                function() {
+                    location.reload();
+                }
+            );
+    
+        });
+
+    });
+
+</script>
+
+

@@ -1,0 +1,110 @@
+html {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    background-image: url("images/pizza.jpg");
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+h1 {
+    font-size: 3.5rem;
+    background-color: rgba(255,255,255, .55);
+    border-radius: 8px;
+    padding: 30px; 
+    font-family: bremen, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2 {
+    color: #fcefdf;
+    margin-bottom: 15px; 
+    text-align: center; 
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+p {
+    color: #fcefdf;
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.jumbotron {
+    background-image: url("images/pizza-banner-3.jpg");
+    background-size: cover;
+    color: black; 
+    margin-bottom: 15px; 
+    margin-top: 15px; 
+    padding: 0;
+}
+
+.container {
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    padding: 15px;
+}
+
+ul.list-group-flush {
+    padding: 0px; 
+}
+
+.list-group-flush .list-group-item {
+    border-radius: 8px; 
+    color: black;
+    background-color: #fcefdf;
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    margin-top: 5px;
+
+}
+
+textarea#pizza {
+    background-color: #fcefdf;
+    color: black;
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    margin-top: 30px;
+}
+
+textarea#pizza:focus, textarea#pizza:focus:active, textarea#pizza:hover {
+    outline: 0 none; 
+    color: black; 
+    border-color: black;
+}
+
+#submitButton {
+    margin-top: 5px; 
+    margin-bottom: 15px;
+}
+
+.btn {
+    outline: none;
+    padding: 0px;
+    border-color: black;
+    color: black;
+    background-color: #fcefdf;
+    padding-left: 10px;
+    padding-right: 10px; 
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+.btn:hover, .btn:focus, .btn:active:focus {
+    background-color: #ff1216; 
+    outline: 0 none; 
+    color: black; 
+    border-color: black;
+}
