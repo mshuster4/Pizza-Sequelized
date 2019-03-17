@@ -1,45 +1,49 @@
 var express = require("express");
-
 var router = express.Router();
 
-var pizza = require("../models/pizza.js");
+var db = require("../models");
+
 
 router.get("/", function(req, res) {
-    pizza.selectAll(function(data) {
-        var hbsObject = {
-            pizza: data
-        };
+
+    db.Pizza.findAll({}).then(function(data) {
+        var hbsObject = { pizza: data };
         console.log(hbsObject);
+
         res.render("index", hbsObject);
     });
 });
 
-router.post("/api/pizzas", function(req, res) {
-    pizza.insertOne([
-        "pizza_name", "devoured"
-    ], [
-        req.body.pizza_name, req.body.devoured
-    ],  function(result) {
+router.post("/index/create", function(req, res) {
+    
+    db.Pizza.create({
+        pizza_name: req.body.pizza_name,
+    }).then(function(data){
+        console.log("added pizza");
 
-            res.json({ id: result.insertId });
+        res.redirect('/');
     });
 
 });
 
-router.put("/api/pizzas/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    pizza.updateOne({
-        devoured: req.body.devoured
-    }, condition, function(result) {
-        if (result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
+router.put("/index/update/:id", function(req, res) {
+        db.Pizza.update({
+            devoured: true
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function(data){
+            res.redirect("/");
     });
 });
+
 
 module.exports = router; 
+
+
+
+
+    
