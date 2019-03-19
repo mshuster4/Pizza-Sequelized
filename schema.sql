@@ -1,3 +1,1 @@
-DROP DATABASE IF EXISTS pizza;
-
-CREATE DATABASE pizza; 
+USE pizza_development;

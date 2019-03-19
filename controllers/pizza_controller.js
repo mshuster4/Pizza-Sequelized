@@ -1,49 +1,35 @@
-var express = require("express");
-var router = express.Router();
-
 var db = require("../models");
 
+module.exports = function(app) {
 
-router.get("/", function(req, res) {
+    app.get("/", function(req, res) {
 
-    db.Pizza.findAll({}).then(function(data) {
-        var hbsObject = { pizza: data };
-        console.log(hbsObject);
-
-        res.render("index", hbsObject);
-    });
-});
-
-router.post("/index/create", function(req, res) {
-    
-    db.Pizza.create({
-        pizza_name: req.body.pizza_name,
-    }).then(function(data){
-        console.log("added pizza");
-
-        res.redirect('/');
+        db.pizzas.findAll({}).then(function(dbPizza) {
+            console.log(dbPizza);
+            res.render("index", {
+                pizzas: dbPizza,
+            });
+        });
     });
 
-});
+    app.post("/pizza/create", function(req, res) {
+        
+        db.pizzas.create({
+            pizza_name: req.body.pizza_name,
+        }).then(function(dbPizza){
+            console.log(dbPizza);
 
-router.put("/index/update/:id", function(req, res) {
-        db.Pizza.update({
-            devoured: true
-        },
-        {
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(function(data){
-            res.redirect("/");
+            res.send(dbPizza);
+        });
+
     });
-});
 
-
-module.exports = router; 
-
+};
 
 
 
-    
+
+
+
+
+        

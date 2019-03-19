@@ -2,22 +2,21 @@
   "development": {
     "username": "root",
     "password": "Margys04041990!",
-    "database": "pizza",
+    "database": "pizza_development",
     "host": "127.0.0.1",
-    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Margys04041990!",
-    "database": "pizza",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Margys04041990!",
-    "database": "pizza",
+    "password": null,
+    "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

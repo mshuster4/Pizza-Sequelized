@@ -1,5 +1,3 @@
-    
-
 <div class="container">
 
     <div class="jumbotron text-center">
@@ -10,7 +8,7 @@
         <div class="col-md-6 col-sm-12">
             <ul class="list-group-flush">
                 <h2>Eat</h2>
-            {{#each Pizza}}
+            {{#each pizzas}}
                 {{#unless this.devoured}}
                 <li class="list-group-item not-devoured">
                     {{this.id}}. {{this.pizza_name}} <button type="button" class="btn devour-button float-right">Devour</button>
@@ -24,7 +22,7 @@
         <div class=" col-md-6 col-sm-12 devoured">
             <ul class="list-group-flush">
                 <h2>Ate</h2>
-            {{#each Pizza}}
+            {{#each pizzas}}
                 {{#if this.devoured}}
                 <li class="list-group-item">
                     {{this.id}}. {{this.pizza_name}}
@@ -35,13 +33,13 @@
         </div>
     </div>
 
-    <form class="create-update-form" method="POST" action="index/create">
+    <form method="POST" action="/pizza/create">
         <div class="row">
 
             <div class="col-md-3"></div>
 
             <div class=" col-md-6 col-sm-12">
-                <textarea class="form-control" id="pizza" type="text" class="form-control" name="pizza_name" placeholder="" rows="2"></textarea>
+                <textarea class="form-control" type="text" name="pizza_name" id="pizza" class="form-control" placeholder="" rows="2"></textarea>
             </div>
 
             <div class="col-md-3"></div>
@@ -62,4 +60,3 @@
     </div>
 
 </div>
-
