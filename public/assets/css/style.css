@@ -88,6 +88,10 @@ textarea#pizza:focus, textarea#pizza:focus:active, textarea#pizza:hover {
     margin-bottom: 15px;
 }
 
+button.btn.devour-button.float-right {
+    margin-top: -25px; 
+}
+
 .btn {
     outline: none;
     padding: 0px;

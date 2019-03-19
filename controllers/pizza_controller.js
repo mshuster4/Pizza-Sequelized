@@ -12,14 +12,27 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/pizza/create", function(req, res) {
+    app.post("/pizzas/create", function(req, res) {
         
         db.pizzas.create({
             pizza_name: req.body.pizza_name,
         }).then(function(dbPizza){
-            console.log(dbPizza);
+            res.redirect("/");
+        });
 
-            res.send(dbPizza);
+    });
+
+    app.put("/pizzas/update/:id", function(req, res){
+
+        db.pizzas.update({
+            devoured: true
+        },
+        {
+            where: {id: req.params.id}
+
+        }).then(function(dbPizza){
+            console.log(dbPizza);
+            res.redirect("/");
         });
 
     });

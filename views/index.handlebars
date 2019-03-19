@@ -11,7 +11,11 @@
             {{#each pizzas}}
                 {{#unless this.devoured}}
                 <li class="list-group-item not-devoured">
-                    {{this.id}}. {{this.pizza_name}} <button type="button" class="btn devour-button float-right">Devour</button>
+                    {{this.id}}. {{this.pizza_name}}
+                     <form method="POST" action="/pizzas/update/{{this.id}}?_method=PUT" class="button-size inline">
+                        <input type="hidden" name="devoured" value="true">
+                        <button type="submit" class="btn devour-button float-right">Devour</button>
+                    </form>
                 </li>
                 {{/unless}}
             {{/each}}
@@ -33,7 +37,7 @@
         </div>
     </div>
 
-    <form method="POST" action="/pizza/create">
+    <form method="POST" action="/pizzas/create">
         <div class="row">
 
             <div class="col-md-3"></div>
