@@ -3,6 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Pizza = sequelize.define('pizzas', {
       pizza_name: {
+        allowNull: false,
         type: DataTypes.STRING
       },
       devoured: {
@@ -19,7 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     {
-        freezeTableName: true
+      freezeTableName: true,
+      classMethods: {
+          associate: function (models) {
+              Burger.belongsTo(models.Customer);
+          }
+      }
+
     });
+
     return Pizza;
 };

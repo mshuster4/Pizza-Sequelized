@@ -68,6 +68,23 @@ ul.list-group-flush {
 
 }
 
+input#customer {
+    background-color: #fcefdf;
+    color: black;
+    outline: 0 none; 
+    color: black; 
+    border-color: black;
+    font-family: houschka-rounded, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+input#customer:focus, input#customer:focus:active, input#customer:hover {
+    outline: 0 none; 
+    color: black; 
+    border-color: black;
+}
+
 textarea#pizza {
     background-color: #fcefdf;
     color: black;
